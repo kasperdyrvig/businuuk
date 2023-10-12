@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="utf-8">
+    <title>Busbilletter og -kort i Nuuk</title>
+    <meta name="description" content="Oversigt over priser for busbilletter og klippekort i Nuuk">
+    <link rel="icon" href="32.png" type="image/png" sizes="32x32">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#fec94b">
+    <meta name="apple-mobile-web-app-title" content="Bus i Nuuk">
+    <link rel="apple-touch-icon" href="300.png">
+    <meta name="theme-color" content="#fec94b">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href="busstyle.css" rel="stylesheet">
+    <link rel="manifest" href="/app/bus/manifest.json">
+</head>
+<body class="app">
+    <header class="header-container">
+        <h1 class="header-title">Billetter og kort</h1>
+    </header>
+    <main class="container">
+        <section class="section">
+            <h2 class="section-title">Billetter</h2>
+            <ul class="ticket-list">
+                <li class="ticket-item">
+                    Voksenbillet: 18 kr.
+                    <small>Fra og med 12 år</small>
+                </li>
+                <li class="ticket-item">
+                    Børnebillet: 8 kr.
+                    <small>4-11 år / barnevogn</small>
+                </li>
+            </ul>
+        </section>
+        <section class="section">
+            <h2 class="section-title">Klippekort</h2>
+            <ul class="ticket-list">
+                <li class="ticket-item">
+                    Voksen: 129 kr.
+                    <small>11 klip</small>
+                </li>
+                <li class="ticket-item">
+                    Barn: 55 kr.
+                    <small>11 klip</small>
+                </li>
+            </ul>
+        </section>
+        <section class="section">
+            <h2 class="section-title">Månedskort</h2>
+            <ul class="ticket-list">
+                <li class="ticket-item">
+                    Voksen: 535 kr.
+                    <small>30 dage</small>
+                </li>
+                <li class="ticket-item">
+                    Pensionist: 265 kr.
+                    <small>30 dage</small>
+                </li>
+                <li class="ticket-item">
+                    Barn: 265 kr.
+                    <small>30 dage</small>
+                </li>
+            </ul>
+        </section>
+        <p><a href="https://bussii.ridango.com" rel="noopener" target="_blank" class="button" title="Log ind og se status på dit buskort.">Mit buskort</a></p>
+    </main>
+    <nav class="app-nav">
+        <a href="index.html" class="app-nav-item active" title="Næste bus"><span class="app-nav-icon">&#128653;</span> Næste bus</a>
+        <!--<a href="index.html" class="app-nav-item" title="Køreplaner"><span class="app-nav-icon">&#128655;</span> Køreplaner</a>-->
+        <a href="prices.html" class="app-nav-item" title="Billetter og kort"><span class="app-nav-icon">&#128179;</span> Billetter og kort</a>
+        <a href="help.html" class="app-nav-item" title="Hjælp"><span class="app-nav-icon">&#10067;</span> Hjælp</a>
+    </nav>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then((reg) => {
+                        console.log('Service worker registered.', reg);
+                    }).catch(err => {
+                        console.log('Registration failed', err);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="utf-8">
+    <title>Næste bus i Nuuk</title>
+    <meta name="description" content="Se næste busafgang">
+    <link rel="icon" href="32.png" type="image/png" sizes="32x32">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#fec94b">
+    <meta name="apple-mobile-web-app-title" content="Bus i Nuuk">
+    <link rel="apple-touch-icon" href="300.png">
+    <meta name="theme-color" content="#fec94b">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href="busstyle.css" rel="stylesheet">
+    <link rel="manifest" href="/app/bus/manifest.json">
+    <script src="timecalc202010.js" async></script>
+</head>
+<body class="app" onload="loadDefault()">
+    <header class="header-container">
+        <h1 class="header-title">Bus i Nuuk</h1>
+    </header>
+    <main class="container">
+        <div class="app-front-requester">
+            <div class="front-form-group">
+                <div class="input-group">
+                    <select id="stopPicker" class="form-control" placeholder="Stoppested" title="Stoppested" onchange="getNextBus()"></select>
+                    <button class="button-star" type="button" onclick="setFavorite()" title="Gem favorit" id="favoriteBtn">&#9733;</button>
+                </div>
+                <button type="button" onclick="getNextBus()" class="button">&#10003;</button>
+            </div>
+
+            <div id="result">
+                
+            </div>
+        </div>
+    </main>
+    <nav class="app-nav">
+        <a href="index.html" class="app-nav-item active" title="Næste bus"><span class="app-nav-icon">&#128653;</span> Næste bus</a>
+        <!--<a href="index.html" class="app-nav-item" title="Køreplaner"><span class="app-nav-icon">&#128655;</span> Køreplaner</a>-->
+        <a href="prices.html" class="app-nav-item" title="Billetter og kort"><span class="app-nav-icon">&#128179;</span> Billetter og kort</a>
+        <a href="help.html" class="app-nav-item" title="Hjælp"><span class="app-nav-icon">&#10067;</span> Hjælp</a>
+    </nav>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then((reg) => {
+                        console.log('Service worker registered.', reg);
+                    }).catch(err => {
+                        console.log('Registration failed', err);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>

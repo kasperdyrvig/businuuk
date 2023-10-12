@@ -1,0 +1,31 @@
+﻿{
+  "short_name": "Bus i Nuuk",
+  "name": "Næste bus i Nuuk",
+  "background_color": "#fec94b",
+  "theme_color": "#fec94b",
+  "display": "standalone",
+  "description": "Se næste afgang for busserne i Nuuk.",
+  "icons": [
+    {
+      "src": "512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    },
+    {
+      "src": "300.png",
+      "type": "image/png",
+      "sizes": "300x300"
+    },
+    {
+      "src": "192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "144.png",
+      "type": "image/png",
+      "sizes": "144x144"
+    }
+  ],
+  "start_url": "."
+}

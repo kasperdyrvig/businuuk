@@ -1,0 +1,356 @@
+﻿:root {
+    --appcolor: #fec94b;
+    --buttoncolor: #E6E6E6;
+    --borderradius: 4px;
+    --fontcolor: #333333;
+    --headerheight: 60px;
+    --inputcolor: #fff;
+    --inputtextcolor: var(--fontcolor);
+    --favoritecolor: var(--appcolor);
+    --areacolor: #fff;
+    --menuareacolor: #fff;
+    --menuitemcolor: #000;
+    --graycolor: #666;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --appcolor: #34290f;
+        --buttoncolor: #191407;
+        --fontcolor: #c19939;
+        --inputcolor: #000;
+        --favoritecolor: #fff;
+        --areacolor: #000;
+        --menuareacolor: #000;
+        --menuitemcolor: #c19939;
+        --graycolor: #333;
+    }
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    padding: 0 0 70px 0;
+    margin: 0;
+    font-size: 18px;
+    color: var(--fontcolor);
+    background-color: var(--appcolor);
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 1em;
+}
+
+.hidden {
+    display: none;
+}
+
+.app-front-requester .form-group {
+    margin-bottom: 1em;
+}
+
+.front-form-group {
+    display: flex;
+    margin-bottom: 1em;
+}
+
+    .front-form-group .input-group {
+        flex-grow: 1;
+        display: flex;
+    }
+
+    .front-form-group .button {
+        width: 55px;
+        padding: 0;
+        margin-left: 1rem;
+        font-size: 1.5em;
+        flex-shrink: 0;
+    }
+
+.app-front-navigation .button {
+    margin-bottom: 1em;
+}
+
+.app-nav {
+    display: flex;
+    justify-content: space-around;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    font-size: 14px;
+    margin: 0 auto;
+    background-color: var(--menuareacolor);
+}
+
+.app-nav-icon {
+    font-size: 1.5em;
+}
+
+.app-nav-item {
+    text-decoration: none;
+    color: var(--manuitemcolor);
+    font-size: .8em;
+    display: inline-flex;
+    flex-direction: column;
+    text-align: center;
+    opacity: .7;
+    padding: .8em 0;
+}
+
+    .app-nav-item.active {
+        opacity: 1;
+    }
+
+.form-control {
+    width: 100%;
+    border-radius: var(--borderradius);
+    background-color: var(--inputcolor);
+    padding: .8em;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.3);
+    font-family: inherit;
+    border: 0;
+    font-size: 1em;
+    color: var(--inputtextcolor);
+}
+
+.input-group {
+    display: flex;
+}
+
+    .input-group > .form-control {
+        border-radius: 0;
+    }
+
+        .input-group > .form-control:first-child {
+            border-radius: var(--borderradius) 0 0 var(--borderradius);
+        }
+
+.button {
+    background-color: var(--buttoncolor);
+    display: block;
+    width: 100%;
+    border: 0;
+    border-radius: var(--borderradius);
+    color: unset;
+    text-decoration: none;
+    padding: .8em;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.3);
+    font-family: inherit;
+    font-size: 1em;
+    text-align: center;
+}
+
+.button-star {
+    background-color: var(--inputcolor);
+    border: 0;
+    border-radius: 0 var(--borderradius) var(--borderradius) 0;
+    color: var(--fontcolor);
+    text-decoration: none;
+    padding: 0 .5em;
+    box-shadow: 0 1px 3px 0 rgba(0,0,0,.3);
+    font-family: inherit;
+    font-size: 1.5em;
+}
+
+    .button-star.active {
+        color: var(--favoritecolor);
+    }
+
+h1, h2 {
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    height: var(--headerheight);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--appcolor);
+}
+
+.header-title {
+    font-weight: 500;
+    margin-left: 1em;
+}
+
+.header-back {
+    color: var(--fontcolor);
+    height: 100%;
+    width: var(--headerheight);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5em;
+    background: none;
+    border: 0;
+}
+
+.content-container {
+    padding: 0 1em;
+}
+
+#result {
+    padding: .5em;
+    background-color: var(--areacolor);
+    border-radius: var(--borderradius);
+}
+
+.section {
+    margin-bottom: 2em;
+}
+
+.section-title {
+    font-weight: 500;
+    margin-bottom: 1em;
+}
+
+.stop-container {
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+}
+
+.stop-id {
+    display: flex;
+    background-color: #e6e6e6;
+    flex-shrink: 0;
+    border-radius: 100%;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+}
+
+.route-container {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: unset;
+    margin-bottom: .5em;
+}
+
+    .route-container:last-child {
+        margin-bottom: 0;
+    }
+
+.route-name {
+    display: flex;
+    background-color: #e6e6e6;
+    box-shadow: 0 2px 5px 0 rgba(0,0,0,.2);
+    flex-shrink: 0;
+    border-radius: 4px;
+    width: 75px;
+    height: 75px;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    font-size: 35px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0,0,0,.5);
+}
+
+.route-1, .route-X1 {
+    background-color: #ed018c;
+}
+
+.route-2 {
+    background-color: #fed51f;
+}
+
+.route-X2 {
+    background-color: #808285;
+}
+
+.route-3 {
+    background-color: #41ad49;
+}
+
+.route-X3 {
+    background-color: #b585bc;
+}
+
+.route-4 {
+    background-color: #00a2e6;
+}
+
+.route-body {
+    display: flex;
+    flex-direction: column;
+}
+
+.route-time-left {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.route-next-stop {
+    color: var(--graycolor);
+    font-size: 14px;
+}
+
+.help-list {
+    background-color: var(--areacolor);
+    border-radius: var(--borderradius);
+}
+
+.help-item {
+    border-top: 1px solid var(--graycolor);
+    padding: .5em .5em .5em 0;
+    position: relative;
+}
+
+    .help-item:first-child {
+        border-top: 0;
+    }
+
+.ticket-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background-color: var(--areacolor);
+    border-radius: var(--borderradius);
+}
+
+.ticket-item {
+    border-top: 1px solid var(--graycolor);
+    padding: .5em 1em;
+    position: relative;
+}
+
+    .ticket-item:first-child {
+        border-top: 0;
+    }
+
+    .ticket-item > small {
+        display: block;
+        opacity: .7;
+    }
+
+.ticket-button {
+    position: absolute;
+    top: .8em;
+    right: 1em;
+    width: auto;
+    padding: .4em;
+}
+
+.last {
+    background-color: indianred;
+    color: #fff;
+    margin-left: 1em;
+    padding: 1px 5px;
+    border-radius: 12px;
+}
