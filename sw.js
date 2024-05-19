@@ -1,11 +1,11 @@
-﻿const cacheName = 'static-nuupbussii-v12';
+﻿const cacheName = 'static-nuupbussii-v13';
 const urlsToCache = [
     '.',
     'index.html',
     'prices.html',
     'help.html',
     'busstyle.css',
-    'timecalc202010.js'
+    'timecalc.js'
 ];
 
 self.addEventListener('install', event => {

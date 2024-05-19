@@ -13,20 +13,6 @@
     --graycolor: #666;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root {
-        --appcolor: #34290f;
-        --buttoncolor: #191407;
-        --fontcolor: #c19939;
-        --inputcolor: #000;
-        --favoritecolor: #fff;
-        --areacolor: #000;
-        --menuareacolor: #000;
-        --menuitemcolor: #c19939;
-        --graycolor: #333;
-    }
-}
-
 * {
     box-sizing: border-box;
 }
