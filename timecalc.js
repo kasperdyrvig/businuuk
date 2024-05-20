@@ -9,7 +9,7 @@ let currentDayType = "";
 const resultElement = document.getElementById("result");
 let currentTime;
 
-const routeData = ["1", "X1", "2", "X2", "3"];
+const routeData = ["1", "2", "X2", "3"];
 const stopData = [
     { id: "1", display: "1", name: "Eqalugalinnguit", position: "64.1887001,-51.7128939" },
     { id: "2", display: "2", name: "Nunngarut", position: "64.185182,-51.7051482" },
@@ -30,24 +30,15 @@ const stopData = [
     { id: "16", display: "16", name: "Qatserisut", position: "64.1718513,-51.7367524" },
     { id: "17", display: "17", name: "Sarfaannguit", position: "64.1793412,-51.7234424" },
     { id: "18", display: "18", name: "Akunnerit", position: "64.185276,-51.7206896" },
-    { id: "23", display: "23", name: "Arsifik", position: "64.1771767,-51.7348127" },
     { id: "24", display: "24", name: "Narsarsuaq", position: "64.1772066,-51.7315979" },
     { id: "27", display: "27", name: "Tuujuk", position: "64.1711948,-51.7344789" },
     { id: "28", display: "28", name: "Røde etagehuse", position: "64.1711948,-51.7344789" },
-    { id: "29", display: "29", name: "Jens Kreutzmannip. Aqq.", position: "64.1711948,-51.7344789" },
-    { id: "30", display: "30", name: "Sanamut Aqq.", position: "64.1700196,-51.7359856" },
-    { id: "31", display: "31", name: "Svend Jungep. Aqq.", position: "64.1700196,-51.7359856" },
-    { id: "32", display: "32", name: "Sipisaq Kujalleq", position: "64.1684943,-51.7332159" },
     { id: "350", display: "35", name: "Qernertunnguanut (mod Nuussuaq)", position: "64.1889938,-51.7248637" },
     { id: "351", display: "35", name: "Qernertunnguanut (mod Nuuk)", position: "64.1889938,-51.7248637" },
     { id: "36", display: "36", name: "Atertaq", position: "64.188663,-51.7005409" },
-    { id: "37", display: "37", name: "Ilimmarfik", position: "64.1912275,-51.696024" },
-    { id: "38", display: "38", name: "Nukappiakuluk", position: "64.1953984,-51.6832138" },
     { id: "39", display: "39", name: "Nuuk Lufthavn", position: "64.1916647,-51.6756845" },
     { id: "40", display: "40", name: "Air Greenland adm.", position: "64.1901139,-51.6745258" },
     { id: "41", display: "41", name: "Asiarpak", position: "64.1736119,-51.6695683" },
-    { id: "42", display: "42", name: "Isikkivik" },
-    { id: "44", display: "44", name: "Isikkivik (mod Nuuk)" },
     { id: "46", display: "46", name: "Qattaaq", position: "64.185024,-51.7046705" },
     { id: "47", display: "47", name: "Naluttarfik Malik", position: "64.185024,-51.7046705" },
     { id: "48", display: "48", name: "Ilimmarfik", position: "64.1912275,-51.696024" },
@@ -56,16 +47,20 @@ const stopData = [
     { id: "52", display: "52", name: "400-rtalik", position: "64.1793412,-51.7234424" },
     { id: "54", display: "54", name: "Atuarfik Hans Lynge", position: "64.1692592,-51.6699001" },
     { id: "56", display: "56", name: "Suloraq", position: "64.1653353,-51.6761817" },
+    { id: "57", display: "57", name: "Unaaq Kitaa", position: "64.164898,-51.678978" },
     { id: "58", display: "58", name: "Nuuk Center", position: "64.1784755,-51.7408154" },
     { id: "59", display: "59", name: "Narsarviaq", position: "64.1828066,-51.7049282" },
     { id: "60", display: "60", name: "Igimaq", position: "64.1677585,-51.6783817" },
     { id: "61", display: "61", name: "Unaaq", position: "64.1700691,-51.6700215" },
-    { id: "62", display: "62", name: "Kommuneqarfik", position: "64.1769488,-51.7372953" }
+    { id: "62", display: "62", name: "Kommuneqarfik", position: "64.1769488,-51.7372953" },
+    { id: "63", display: "63", name: "Maligiaq", position: "64.184623,-51.700291" },
+    { id: "64", display: "64", name: "Pukuffik", position: "64.183149,-51.695977" },
+    { id: "65", display: "65", name: "Munck camp", position: "64.187580,-51.673871" }
 ];
 const routes = {
     "1": {
-        stops: [18, 1, 47, 50, 54, 56, 57, 60, 61, 41, 46, 8, 9, 52, 28, 27, 62, 58, 24],
-        driveTime: [0, 1, 3, 3, 2, 2, 2, 1, 2, 2, 3, 2, 1, 2, 2, 1, 4, 2, 3],
+        stops: [18, 1, 47, 63, 50, 54, 56, 57, 60, 61, 41, 64, 46, 8, 9, 52, 28, 27, 62, 58, 24],
+        driveTime: [0, 1, 3, 1, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 1, 2, 2, 1, 4, 2, 6, 2],
         drivingHours: {
             holiday: [
                 { startHour: 6, startMinute: 9, endHour: 24, endMinute: 7, interval: 40 },
@@ -73,40 +68,31 @@ const routes = {
             ],
             weekend: [
                 { startHour: 6, startMinute: 9, endHour: 24, endMinute: 7, interval: 40 },
-                { startHour: 8, startMinute: 9, endHour: 21, endMinute: 7, interval: 40 }
+                { startHour: 9, startMinute: 9, endHour: 17, endMinute: 47, interval: 40 }
             ],
-            default: [
+            weekday: [
                 { startHour: 6, startMinute: 9, endHour: 24, endMinute: 7, interval: 40 },
                 { startHour: 6, startMinute: 29, endHour: 21, endMinute: 7, interval: 40 },
-                { startHour: 7, startMinute: 19, endHour: 7, endMinute: 57 }
-            ]
-        }
-    },
-    "X1": {
-        stops: [18, 1, 47, 50, 54, 41, 46, 8, 9, 10, 62, 58, 24],
-        driveTime: [0, 1, 3, 3, 2, 3, 4, 2, 1, 2, 3, 2, 2],
-        drivingHours: {
-            weekday: [
-                { startHour: 7, startMinute: 4, endHour: 9, endMinute: 32, interval: 30 },
-                { startHour: 7, startMinute: 17, endHour: 9, endMinute: 17, interval: 30 },
-                { startHour: 12, startMinute: 34, endHour: 17, endMinute: 53, interval: 30 },
-                { startHour: 14, startMinute: 49, endHour: 18, endMinute: 8, interval: 30 }
+                { startHour: 6, startMinute: 59, endHour: 8, endMinute: 57, interval: 40 },
+                { startHour: 7, startMinute: 19, endHour: 9, endMinute: 17, interval: 40 },
+                { startHour: 12, startMinute: 39, endHour: 17, endMinute: 17, interval: 40 },
+                { startHour: 14, startMinute: 59, endHour: 17, endMinute: 37, interval: 40 }
             ]
         }
     },
     "2": {
         stops: [17, 18, 70, 1, 36, 48, 49, 19, 2, 59, 3, 4, 5, 6, 71, 8, 9, 10, 11, 12, 13, 14, 15, 16],
-        driveTime: [0, 2, 3, 2, 1, 2, 1, 1, 2, 1, 1, 1, 2, 2, 3, 2, 1, 2, 2, 1, 3, 1, 2, 1],
+        driveTime: [0, 2, 3, 2, 1, 2, 1, 1, 1, 1, 1, 1, 2, 2, 3, 2, 1, 2, 2, 1, 3, 1, 2, 1, 2],
         drivingHours: {
             holiday: [
-                { startHour: 7, startMinute: 20, endHour: 27, endMinute: 58, interval: 40 },
+                { startHour: 6, startMinute: 0, endHour: 23, endMinute: 58, interval: 40 },
                 { startHour: 11, startMinute: 0, endHour: 20, endMinute: 58, interval: 40 }
             ],
             weekend: [
                 { startHour: 6, startMinute: 0, endHour: 23, endMinute: 58, interval: 40 },
                 { startHour: 9, startMinute: 0, endHour: 20, endMinute: 58, interval: 40 }
             ],
-            default: [
+            weekday: [
                 { startHour: 6, startMinute: 0, endHour: 23, endMinute: 58, interval: 40 },
                 { startHour: 6, startMinute: 20, endHour: 20, endMinute: 58, interval: 40 }
             ]
@@ -114,36 +100,30 @@ const routes = {
     },
     "X2": {
         stops: [17, 18, 1, 2, 59, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16],
-        driveTime: [0, 2, 1, 2, 1, 1, 1, 2, 2, 3, 1, 2, 2, 1, 3, 1, 2, 1, 2],
+        driveTime: [0, 2, 1, 2, 1, 1, 1, 2, 2, 3, 1, 2, 2, 1, 3, 1, 2, 2, 1],
         drivingHours: {
             weekday: [
                 { startHour: 7, startMinute: 18, endHour: 9, endMinute: 16, interval: 30 },
                 { startHour: 7, startMinute: 33, endHour: 9, endMinute: 1, interval: 30 },
-                { startHour: 11, startMinute: 3, endHour: 18, endMinute: 1, interval: 30 },
-                { startHour: 12, startMinute: 48, endHour: 17, endMinute: 16, interval: 30 }
+                { startHour: 12, startMinute: 48, endHour: 18, endMinute: 1, interval: 30 },
+                { startHour: 13, startMinute: 3, endHour: 17, endMinute: 16, interval: 30 }
             ]
         }
     },
     "3": {
         stops: [10, 11, 12, 13, 14, 15, 16, 17, 18, 350, 1, 2, 59, 3, 4, 5, 6, 36, 37, 38, 42, 39, 40, 44, 43, 48, 49, 19, 8, 351, 9],
-        driveTime: [0, 2, 1, 3, 1, 1, 2, 2, 2, 3, 4, 2, 1, 1, 2, 2, 2, 2, 2, 1, 2, 1, 2, 3, 2, 2, 1, 1, 2, 3, 2],
+        driveTime:[0, 2, 1, 2, 1, 1, 2, 2, 2, 3, 3, 2, 1, 1, 1, 2, 2, 2, 1, 1, 1, 1, 5, 1, 1, 2, 6, 1, 1, 2, 2, 3],
         drivingHours: {
-            holiday: [],
             weekend: [
                 { startHour: 12, startMinute: 26, endHour: 16, endMinute: 23, interval: 60 }
             ],
-            default: [
-                { startHour: 6, startMinute: 16, endHour: 8, endMinute: 13, interval: 60 },
-                { startHour: 8, startMinute: 26, endHour: 18, endMinute: 23, interval: 60 }
+            weekday: [
+                { startHour: 6, startMinute: 16, endHour: 8, endMinute: 23, interval: 60 },
+                { startHour: 8, startMinute: 26, endHour: 17, endMinute: 23, interval: 60 }
             ]
         }
     }
 };
-
-// Function to navigate back to the previous page
-function goBack() {
-    window.history.back();
-}
 
 // Function to set a favorite stop
 function setFavorite() {
@@ -219,8 +199,8 @@ function getNextBus() {
 
     // Display a message if no routes are found
     if (routeResults === 0) {
-        resultElement.innerHTML += `<div class=\"route-container\">
-            <div class=\"route-body\">
+        resultElement.innerHTML += `<div class="route-container">
+            <div class="route-body">
                 <strong class="route-time-left">Ingen ruter kører her p.t.</strong>
             </div>
         </div>`;
@@ -380,13 +360,13 @@ function pushElement(departureMinutes, departureTimes) {
                 <small class="route-next-stop">
                     ${formatTime(departureTimes[0])}
                     ${departureTimes.length > 1 ? ` og igen ${formatTime(departureTimes[1])}` : ''}
-                </small>
+</small>
             </div>
         </div>`;
 }
 
 function printResult(msg) {
-    resultElement.innerHTML += `<div class=\"route-container\">
+    resultElement.innerHTML += `<div class="route-container">
         <div class="route-name route-${currentRoute}">${currentRoute}</div>
             <div class="route-body">
                 <strong class="route-time-left">${msg}</strong>
