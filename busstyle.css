@@ -46,18 +46,18 @@ body {
     margin-bottom: 1em;
 }
 
-    .front-form-group .input-group {
-        flex-grow: 1;
-        display: flex;
-    }
+.front-form-group .input-group {
+    flex-grow: 1;
+    display: flex;
+}
 
-    .front-form-group .button {
-        width: 55px;
-        padding: 0;
-        margin-left: 1rem;
-        font-size: 1.5em;
-        flex-shrink: 0;
-    }
+.front-form-group .button {
+    width: 55px;
+    padding: 0;
+    margin-left: 1rem;
+    font-size: 1.5em;
+    flex-shrink: 0;
+}
 
 .app-front-navigation .button {
     margin-bottom: 1em;
@@ -90,33 +90,38 @@ body {
     padding: .8em 0;
 }
 
-    .app-nav-item.active {
-        opacity: 1;
-    }
+.app-nav-item.active {
+    opacity: 1;
+}
 
 .form-control {
     width: 100%;
     border-radius: var(--borderradius);
     background-color: var(--inputcolor);
     padding: .8em;
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,.3);
     font-family: inherit;
     border: 0;
     font-size: 1em;
     color: var(--inputtextcolor);
+    border-right: 1px solid #bbbbbb;
 }
 
 .input-group {
     display: flex;
 }
 
-    .input-group > .form-control {
-        border-radius: 0;
-    }
+.input-group-shadow {
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .3);
+    border-radius: 0 var(--borderradius) var(--borderradius) 0;
+}
 
-        .input-group > .form-control:first-child {
-            border-radius: var(--borderradius) 0 0 var(--borderradius);
-        }
+.input-group>.form-control {
+    border-radius: 0;
+}
+
+.input-group>.form-control:first-child {
+    border-radius: var(--borderradius) 0 0 var(--borderradius);
+}
 
 .button {
     background-color: var(--buttoncolor);
@@ -127,29 +132,33 @@ body {
     color: unset;
     text-decoration: none;
     padding: .8em;
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,.3);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .3);
     font-family: inherit;
     font-size: 1em;
     text-align: center;
 }
 
-.button-star {
+.button-star, .button-pin {
     background-color: var(--inputcolor);
     border: 0;
-    border-radius: 0 var(--borderradius) var(--borderradius) 0;
     color: var(--fontcolor);
     text-decoration: none;
     padding: 0 .5em;
-    box-shadow: 0 1px 3px 0 rgba(0,0,0,.3);
     font-family: inherit;
     font-size: 1.5em;
 }
 
-    .button-star.active {
-        color: var(--favoritecolor);
-    }
+.button-star.active {
+    color: var(--favoritecolor);
+}
 
-h1, h2 {
+.button-pin {
+    border-left: 1px solid #bbbbbb;
+    border-radius: 0 var(--borderradius) var(--borderradius) 0;
+}
+
+h1,
+h2 {
     font-size: 18px;
     margin: 0;
     padding: 0;
@@ -227,14 +236,14 @@ h1, h2 {
     margin-bottom: .5em;
 }
 
-    .route-container:last-child {
-        margin-bottom: 0;
-    }
+.route-container:last-child {
+    margin-bottom: 0;
+}
 
 .route-name {
     display: flex;
     background-color: #e6e6e6;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,.2);
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, .2);
     flex-shrink: 0;
     border-radius: 4px;
     width: 75px;
@@ -245,10 +254,11 @@ h1, h2 {
     font-size: 35px;
     font-weight: bold;
     color: #fff;
-    text-shadow: 0 1px 0 rgba(0,0,0,.5);
+    text-shadow: 0 1px 0 rgba(0, 0, 0, .5);
 }
 
-.route-1, .route-X1 {
+.route-1,
+.route-X1 {
     background-color: #ed018c;
 }
 
@@ -298,9 +308,9 @@ h1, h2 {
     position: relative;
 }
 
-    .help-item:first-child {
-        border-top: 0;
-    }
+.help-item:first-child {
+    border-top: 0;
+}
 
 .ticket-list {
     list-style: none;
@@ -316,14 +326,14 @@ h1, h2 {
     position: relative;
 }
 
-    .ticket-item:first-child {
-        border-top: 0;
-    }
+.ticket-item:first-child {
+    border-top: 0;
+}
 
-    .ticket-item > small {
-        display: block;
-        opacity: .7;
-    }
+.ticket-item>small {
+    display: block;
+    opacity: .7;
+}
 
 .ticket-button {
     position: absolute;

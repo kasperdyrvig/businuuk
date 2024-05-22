@@ -11,51 +11,51 @@ let currentTime;
 
 const routeData = ["1", "2", "X2", "3"];
 const stopData = [
-    { id: "1", display: "1", name: "Eqalugalinnguit", position: "64.1887001,-51.7128939" },
-    { id: "2", display: "2", name: "Nunngarut", position: "64.185182,-51.7051482" },
-    { id: "3", display: "3", name: "Illorput", position: "64.1806788,-51.7069689" },
-    { id: "4", display: "4", name: "Nigerleq", position: "64.1784781,-51.7106846" },
-    { id: "5", display: "5", name: "Sangoriaq", position: "64.1816733,-51.7108667" },
-    { id: "6", display: "6", name: "Nuniaffik", position: "64.1860343,-51.7105026" },
-    { id: "70", display: "7", name: "Qajaasat (mod Nuussuaq)", position: "64.1916859,-51.7097386" },
-    { id: "71", display: "7", name: "Qajaasat (mod Nuuk)", position: "64.1916859,-51.7097386" },
-    { id: "8", display: "8", name: "Paarnat", position: "64.187966,-51.7212763" },
-    { id: "9", display: "9", name: "Eqalugalinnguit Tasiat", position: "64.185276,-51.7206896" },
-    { id: "10", display: "10", name: "H.J. Rinksvej", position: "64.1776196,-51.7339269" },
-    { id: "11", display: "11", name: "Rasmuuseeqqap Aqq.", position: "64.1785416,-51.7403829" },
-    { id: "12", display: "12", name: "Kuussuaq", position: "64.1771636,-51.7404361" },
-    { id: "13", display: "13", name: "Nuup Qeqqa", position: "64.1744375,-51.7367254" },
-    { id: "14", display: "14", name: "Katersortarfik", position: "64.1732623,-51.737402" },
-    { id: "15", display: "15", name: "N.I.", position: "64.1718513,-51.7367524" },
-    { id: "16", display: "16", name: "Qatserisut", position: "64.1718513,-51.7367524" },
-    { id: "17", display: "17", name: "Sarfaannguit", position: "64.1793412,-51.7234424" },
-    { id: "18", display: "18", name: "Akunnerit", position: "64.185276,-51.7206896" },
-    { id: "24", display: "24", name: "Narsarsuaq", position: "64.1772066,-51.7315979" },
-    { id: "27", display: "27", name: "Tuujuk", position: "64.1711948,-51.7344789" },
-    { id: "28", display: "28", name: "Røde etagehuse", position: "64.1711948,-51.7344789" },
-    { id: "350", display: "35", name: "Qernertunnguanut (mod Nuussuaq)", position: "64.1889938,-51.7248637" },
-    { id: "351", display: "35", name: "Qernertunnguanut (mod Nuuk)", position: "64.1889938,-51.7248637" },
-    { id: "36", display: "36", name: "Atertaq", position: "64.188663,-51.7005409" },
-    { id: "39", display: "39", name: "Nuuk Lufthavn", position: "64.1916647,-51.6756845" },
-    { id: "40", display: "40", name: "Air Greenland adm.", position: "64.1901139,-51.6745258" },
-    { id: "41", display: "41", name: "Asiarpak", position: "64.1736119,-51.6695683" },
-    { id: "46", display: "46", name: "Qattaaq", position: "64.185024,-51.7046705" },
-    { id: "47", display: "47", name: "Naluttarfik Malik", position: "64.185024,-51.7046705" },
-    { id: "48", display: "48", name: "Ilimmarfik", position: "64.1912275,-51.696024" },
-    { id: "49", display: "49", name: "Manguaraq", position: "64.1894572,-51.6960991" },
-    { id: "50", display: "50", name: "Tikiusaaq", position: "64.1736119,-51.6695683" },
-    { id: "52", display: "52", name: "400-rtalik", position: "64.1793412,-51.7234424" },
-    { id: "54", display: "54", name: "Atuarfik Hans Lynge", position: "64.1692592,-51.6699001" },
-    { id: "56", display: "56", name: "Suloraq", position: "64.1653353,-51.6761817" },
-    { id: "57", display: "57", name: "Unaaq Kitaa", position: "64.164898,-51.678978" },
-    { id: "58", display: "58", name: "Nuuk Center", position: "64.1784755,-51.7408154" },
-    { id: "59", display: "59", name: "Narsarviaq", position: "64.1828066,-51.7049282" },
-    { id: "60", display: "60", name: "Igimaq", position: "64.1677585,-51.6783817" },
-    { id: "61", display: "61", name: "Unaaq", position: "64.1700691,-51.6700215" },
-    { id: "62", display: "62", name: "Kommuneqarfik", position: "64.1769488,-51.7372953" },
-    { id: "63", display: "63", name: "Maligiaq", position: "64.184623,-51.700291" },
-    { id: "64", display: "64", name: "Pukuffik", position: "64.183149,-51.695977" },
-    { id: "65", display: "65", name: "Munck camp", position: "64.187580,-51.673871" }
+    { id: "1", display: "1", name: "Eqalugalinnguit", lat: "64.1887001", lon: "51.7128939" },
+    { id: "2", display: "2", name: "Nunngarut", lat: "64.185182", lon: "51.7051482" },
+    { id: "3", display: "3", name: "Illorput", lat: "64.1806788", lon: "51.7069689" },
+    { id: "4", display: "4", name: "Nigerleq", lat: "64.1784781", lon: "51.7106846" },
+    { id: "5", display: "5", name: "Sangoriaq", lat: "64.1816733", lon: "51.7108667" },
+    { id: "6", display: "6", name: "Nuniaffik", lat: "64.1860343", lon: "51.7105026" },
+    { id: "70", display: "7", name: "Qajaasat (mod Nuussuaq)", lat: "64.1916859", lon: "51.7097386" },
+    { id: "71", display: "7", name: "Qajaasat (mod Nuuk)", lat: "64.1916859", lon: "51.7097386" },
+    { id: "8", display: "8", name: "Paarnat", lat: "64.187966", lon: "51.7212763" },
+    { id: "9", display: "9", name: "Eqalugalinnguit Tasiat", lat: "64.185276", lon: "51.7206896" },
+    { id: "10", display: "10", name: "H.J. Rinksvej", lat: "64.1776196", lon: "51.7339269" },
+    { id: "11", display: "11", name: "Rasmuuseeqqap Aqq.", lat: "64.1785416", lon: "51.7403829" },
+    { id: "12", display: "12", name: "Kuussuaq", lat: "64.1771636", lon: "51.7404361" },
+    { id: "13", display: "13", name: "Nuup Qeqqa", lat: "64.1744375", lon: "51.7367254" },
+    { id: "14", display: "14", name: "Katersortarfik", lat: "64.1732623", lon: "51.737402" },
+    { id: "15", display: "15", name: "N.I.", lat: "64.1718513", lon: "51.7367524" },
+    { id: "16", display: "16", name: "Qatserisut", lat: "64.1718513", lon: "51.7367524" },
+    { id: "17", display: "17", name: "Sarfaannguit", lat: "64.1793412", lon: "51.7234424" },
+    { id: "18", display: "18", name: "Akunnerit", lat: "64.185276", lon: "51.7206896" },
+    { id: "24", display: "24", name: "Narsarsuaq", lat: "64.1772066", lon: "51.7315979" },
+    { id: "27", display: "27", name: "Tuujuk", lat: "64.1711948", lon: "51.7344789" },
+    { id: "28", display: "28", name: "Røde etagehuse", lat: "64.1711948", lon: "51.7344789" },
+    { id: "350", display: "35", name: "Qernertunnguanut (mod Nuussuaq)", lat: "64.1889938", lon: "51.7248637" },
+    { id: "351", display: "35", name: "Qernertunnguanut (mod Nuuk)", lat: "64.1889938", lon: "51.7248637" },
+    { id: "36", display: "36", name: "Atertaq", lat: "64.188663", lon: "51.7005409" },
+    { id: "39", display: "39", name: "Nuuk Lufthavn", lat: "64.1916647", lon: "51.6756845" },
+    { id: "40", display: "40", name: "Air Greenland adm.", lat: "64.1901139", lon: "51.6745258" },
+    { id: "41", display: "41", name: "Asiarpak", lat: "64.1736119", lon: "51.6695683" },
+    { id: "46", display: "46", name: "Qattaaq", lat: "64.185024", lon: "51.7046705" },
+    { id: "47", display: "47", name: "Naluttarfik Malik", lat: "64.185024", lon: "51.7046705" },
+    { id: "48", display: "48", name: "Ilimmarfik", lat: "64.1912275", lon: "51.696024" },
+    { id: "49", display: "49", name: "Manguaraq", lat: "64.1894572", lon: "51.6960991" },
+    { id: "50", display: "50", name: "Tikiusaaq", lat: "64.1736119", lon: "51.6695683" },
+    { id: "52", display: "52", name: "400-rtalik", lat: "64.1793412", lon: "51.7234424" },
+    { id: "54", display: "54", name: "Atuarfik Hans Lynge", lat: "64.1692592", lon: "51.6699001" },
+    { id: "56", display: "56", name: "Suloraq", lat: "64.1653353", lon: "51.6761817" },
+    { id: "57", display: "57", name: "Unaaq Kitaa", lat: "64.164898", lon: "51.678978" },
+    { id: "58", display: "58", name: "Nuuk Center", lat: "64.1784755", lon: "51.7408154" },
+    { id: "59", display: "59", name: "Narsarviaq", lat: "64.1828066", lon: "51.7049282" },
+    { id: "60", display: "60", name: "Igimaq", lat: "64.1677585", lon: "51.6783817" },
+    { id: "61", display: "61", name: "Unaaq", lat: "64.1700691", lon: "51.6700215" },
+    { id: "62", display: "62", name: "Kommuneqarfik", lat: "64.1769488", lon: "51.7372953" },
+    { id: "63", display: "63", name: "Maligiaq", lat: "64.184623", lon: "51.700291" },
+    { id: "64", display: "64", name: "Pukuffik", lat: "64.183149", lon: "51.695977" },
+    { id: "65", display: "65", name: "Munck camp", lat: "64.187580", lon: "51.673871" }
 ];
 const routes = {
     "1": {
@@ -392,7 +392,32 @@ function populateDropdown() {
         fragment.appendChild(el);
     });
 
-    dropdownEl.appendChild(fragment);
+    const storedFavorite = localStorage.getItem("favoriteStop");
+
+    if (storedFavorite) {
+        const favStop = stopData.find(stop => stop.id === storedFavorite);
+        
+        let el = document.createElement("option");
+        el.textContent = favStop.display + " " + favStop.name;
+        el.value = favStop.id;
+
+        let favGroup = document.createElement("optgroup");
+        favGroup.label = "Dit stoppested";
+        favGroup.appendChild(el);
+
+        dropdownEl.appendChild(favGroup);
+    }
+
+    let dropdownGroup = document.createElement("optgroup");
+    dropdownGroup.label = "Alle stoppesteder";
+    dropdownGroup.appendChild(fragment);
+    dropdownEl.appendChild(dropdownGroup);
+}
+
+function setDropdown(stopId) {
+    const dropdownEl = document.getElementById("stopPicker");
+    dropdownEl.value = stopId;
+    checkFavorite();
 }
 
 function resetDropdown(dropdownEl) {
@@ -412,4 +437,50 @@ function loadDefault() {
     }
 
     getNextBus();
+}
+
+function calculateDistance(lat1, lon1, lat2, lon2) {
+    const R = 6371; // Jordens radius i kilometer
+    const dLat = (lat2 - lat1) * (Math.PI / 180);
+    const dLon = (lon2 - lon1) * (Math.PI / 180);
+    const a = 
+        Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(lat1 * (Math.PI / 180)) * Math.cos(lat2 * (Math.PI / 180)) * 
+        Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)); 
+    const distance = R * c; // Afstand i kilometer
+    return distance;
+}
+
+function findNearestStop(userLat, userLon) {
+    let nearestStop = null;
+    let shortestDistance = Infinity;
+
+    stopData.forEach(stop => {
+        const distance = calculateDistance(userLat, userLon, stop.lat, stop.lon);
+        if (distance < shortestDistance) {
+            shortestDistance = distance;
+            nearestStop = stop;
+        }
+    });
+
+    return nearestStop;
+}
+
+function getNearestStop() {
+    navigator.geolocation.getCurrentPosition((position) => {
+        const userLat = position.coords.latitude;
+        const userLon = position.coords.longitude;
+        const nearestStop = findNearestStop(userLat, userLon);
+        if (nearestStop) {
+            //resultElement.innerHTML = `Nærmeste stoppested er ${nearestStop.name} ved (${nearestStop.lat}, ${nearestStop.lon})`;
+            setDropdown(nearestStop.id);
+            getNextBus();
+        } else {
+            resultElement.innerHTML = "Ingen stoppesteder fundet.";
+        }
+    }, (error) => {
+        console.error('Error getting location:', error);
+        document.getElementById('dataContainer').innerHTML = 'Fejl ved hentning af position: ' + error.message;
+    });
 }
