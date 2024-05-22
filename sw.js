@@ -1,4 +1,4 @@
-﻿const cacheName = 'static-nuupbussii-v13';
+﻿const cacheName = 'static-nuupbussii-v14';
 const urlsToCache = [
     '.',
     'index.html',

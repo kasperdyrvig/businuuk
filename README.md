@@ -5,6 +5,8 @@
 ## Opdateringer
 
 Maj 2024
+- Mulighed for at finde stop baseret på GPS-lokation
+- Favoritstop vises øverst i listen
 - Flyttet til GitHub
 - Dark theme fjernet
 - Refactor javascript med ChatGPT
