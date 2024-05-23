@@ -1,4 +1,4 @@
-﻿const CACHE_NAME = 'pwa-businuuk-v15';
+﻿const CACHE_NAME = 'pwa-businuuk-v16';
 const urlsToCache = [
     '.',
     'index.html',

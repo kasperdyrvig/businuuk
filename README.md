@@ -6,7 +6,7 @@
 
 Maj 2024
 - Forbedret offline-oplevelse.
-- Mulighed for at finde stop baseret på GPS-lokation.
+- Mulighed for at finde nærmeste stop baseret på GPS-lokation.
 - Favoritstop vises øverst i listen.
 - Flyttet til GitHub.
 - Dark theme fjernet.
