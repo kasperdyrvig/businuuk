@@ -5,11 +5,12 @@
 ## Opdateringer
 
 Maj 2024
-- Mulighed for at finde stop baseret på GPS-lokation
-- Favoritstop vises øverst i listen
-- Flyttet til GitHub
-- Dark theme fjernet
-- Refactor javascript med ChatGPT
+- Forbedret offline-oplevelse.
+- Mulighed for at finde stop baseret på GPS-lokation.
+- Favoritstop vises øverst i listen.
+- Flyttet til GitHub.
+- Dark theme fjernet.
+- Refactor javascript med ChatGPT.
 
 December 2019
 - Ændret timeslots til at kende minutinterval.

@@ -2,8 +2,7 @@
 <html lang="da">
 <head>
     <meta charset="utf-8">
-    <title>Næste bus i Nuuk</title>
-    <meta name="description" content="Se næste busafgang">
+    <title>Offline</title>
     <link rel="icon" href="32.png" type="image/png" sizes="32x32">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="#fec94b">
@@ -13,27 +12,13 @@
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <link href="busstyle.css" rel="stylesheet">
     <link rel="manifest" href="manifest.json">
-    <script src="timecalc.js" async></script>
 </head>
 <body class="app" onload="loadDefault()">
     <header class="header-container">
-        <h1 class="header-title">Bus i Nuuk</h1>
+        <h1 class="header-title">Bus i Nuuk &ndash; Offline</h1>
     </header>
     <main class="container">
-        <div class="app-front-requester">
-            <div class="front-form-group">
-                <div class="input-group input-group-shadow">
-                    <select id="stopPicker" class="form-control" placeholder="Stoppested" title="Stoppested" onchange="getNextBus()"></select>
-                    <button class="button-star" type="button" onclick="setFavorite()" title="Gem som favorit" id="favoriteBtn">&#9733;</button>
-                    <button class="button-pin" type="button" onclick="getNearestStop()" title="Find mit nærmeste stoppested">📍</button>
-                </div>
-                <button type="button" onclick="getNextBus()" class="button" title="Opdater">&#x21bb;</button>
-            </div>
-
-            <div id="result">
-                
-            </div>
-        </div>
+        <p>Du ser ud til at være offline. Opret forbindelse til internettet for at få de nyeste data.</p>
     </main>
     <nav class="app-nav">
         <a href="/" class="app-nav-item active" title="Næste bus"><span class="app-nav-icon">&#128653;</span> Næste bus</a>
