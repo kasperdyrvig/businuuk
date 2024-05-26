@@ -554,11 +554,12 @@ function loadRoutes() {
             for (const key in routes) {
                 if (routes.hasOwnProperty(key)) {
                     const clon = listItemTemplate.content.cloneNode(true);
-                    let li = clon.querySelector("li");
+                    let li = clon.querySelector("a");
                     const route = routes[key];
                     li.querySelector(".route-name").classList.add("route-" + key);
                     li.querySelector(".route-name").textContent = key;
                     li.querySelector(".route-desc").textContent = route.description;
+                    li.setAttribute("href", "route.html?route=" + key);
                     routesList.appendChild(clon);
                 }
             }
@@ -567,4 +568,39 @@ function loadRoutes() {
     else {
         console.log("Templates virker ikke");
     }
+}
+
+function getSelectedRouteFromQueryString() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('route') || "X2"; // Default til "X2" hvis ingen parameter
+}
+
+function loadRouteDetails() {
+    const selectedRoute = getSelectedRouteFromQueryString();
+
+    // Check if the route exists
+    if (!routes[selectedRoute]) {
+        console.error(`Route ${selectedRoute} not found`);
+        return;
+    }
+
+    document.querySelector(".route-name").textContent = selectedRoute;
+    document.querySelector(".route-name").classList.add("route-" + selectedRoute);
+    document.querySelector(".line").classList.add("line-" + selectedRoute);
+    document.querySelector(".route-desc").textContent = routes[selectedRoute].description;
+
+    const lineItemTemp = document.getElementById("lineStopDetailTemplate");
+    const lineEl = document.querySelector(".line");
+
+    routes[selectedRoute].stops.forEach(lineItem => {
+        const stop = stopData.find(stop => stop.id === String(lineItem));
+        if (stop) {
+            const clone = lineItemTemp.content.cloneNode(true);
+            clone.querySelector(".line-stop-number").textContent = stop.display;
+            clone.querySelector(".line-stop-name").textContent = stop.name;
+            lineEl.appendChild(clone);
+        } else {
+            console.error(`Stop with ID ${lineItem} not found`);
+        }
+    });
 }

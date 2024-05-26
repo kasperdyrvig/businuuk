@@ -12,28 +12,34 @@
     <meta name="theme-color" content="#fec94b">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
     <link href="busstyle.css" rel="stylesheet">
-    <link rel="manifest" href="/app/bus/manifest.json">
-    <script src="timecalc7.js" async></script>
+    <link rel="manifest" href="manifest.json">
+    <script src="timecalc.js" async></script>
 </head>
-<body class="app">
+<body class="app" onload="loadRouteDetails()">
     <header class="header-container">
         <h1 class="header-title">Rute</h1>
     </header>
     <main class="container">
-        <section class="section">
-            <div id="result" style="margin-bottom: 1em;">
-                <div class="route-container">
-                    <div class="route-name route-X2">X2</div>
+        <div class="bg-white">
+            <div class="route-container">
+                <div class="route-name route-name-small">?</div>
+                <div class="route-body">
+                    <h2 class="route-desc">[Desc]</h2>
+                    <!-- <small class="route-status">Status</small> -->
                 </div>
             </div>
-            <ul class="ticket-list">
-                <li class="ticket-item">4 Nigerleq</li>
-            </ul>
-        </section>
+            <ol class="line"></ol>
+            <template id="lineStopDetailTemplate">
+                <li>
+                    <span class="line-stop-number">10</span>
+                    <span class="line-stop-name">Navn</span>
+                </li>
+            </template>
+        </div>
     </main>
     <nav class="app-nav">
-        <a href="index.html" class="app-nav-item active" title="Næste bus"><span class="app-nav-icon">&#128653;</span> Næste bus</a>
-        <a href="route.html" class="app-nav-item" title="Ruter"><span class="app-nav-icon">&#128655;</span> Ruter</a>
+        <a href="index.html" class="app-nav-item" title="Næste bus"><span class="app-nav-icon">&#128653;</span> Næste bus</a>
+        <a href="routes.html" class="app-nav-item" title="Ruter"><span class="app-nav-icon">&#128655;</span> Ruter</a>
         <a href="prices.html" class="app-nav-item" title="Billetter og kort"><span class="app-nav-icon">&#128179;</span> Billetter og kort</a>
         <a href="help.html" class="app-nav-item" title="Hjælp"><span class="app-nav-icon">&#10067;</span> Hjælp</a>
     </nav>

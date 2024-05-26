@@ -198,7 +198,7 @@ h2 {
     padding: 0 1em;
 }
 
-#result {
+#result, .bg-white {
     padding: .5em;
     background-color: var(--areacolor);
     border-radius: var(--borderradius);
@@ -259,6 +259,12 @@ h2 {
     font-weight: bold;
     color: #fff;
     text-shadow: 0 1px 0 rgba(0, 0, 0, .5);
+}
+
+.route-name-small {
+    width: 50px;
+    height: 50px;
+    font-size: 25px;
 }
 
 .route-1,
@@ -361,4 +367,36 @@ h2 {
     padding: .5em;
     background-color: var(--areacolor);
     border-radius: var(--borderradius);
+}
+
+.line {
+list-style: none;
+padding: 0;
+}
+
+.line > li {
+display: grid;
+    grid-template-columns: 50px auto 100px;
+    margin-bottom: .5em;
+    align-items: center;
+    position: relative;
+}
+
+.line li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    border-left: 4px solid #808285;
+    top: 100%;
+    left: 23px;
+    height: 50%;
+}
+
+.line-stop-number {
+    aspect-ratio: 1 / 1;
+    border: 3px solid #808285;
+    border-radius: 9999px;
+    margin: 0 .5em;
+    text-align: center;
+    font-weight: 500;
+    background-color: white;
 }
