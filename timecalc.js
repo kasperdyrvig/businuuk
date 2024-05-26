@@ -132,16 +132,63 @@ const routes = {
         }
     }
 };
+const holidayDates = [
+    "01-01", // 1. januar
+    "01-06", // 6. januar (hvis det er i hverdagene) efter kl. 12
+    "05-01", // 1. maj (hvis det er i hverdagene) efter kl. 12
+    "06-21", // 21. juni
+    "12-24", // 24. december indtil kl. 19
+    "12-25", // 25. december
+    "12-26", // 26. december
+    "12-31", // 31. december indtil kl. 19
+    "03-28", // Skærtorsdag 2024
+    "03-29", // Langfredag 2024
+    "03-31", // Påskedag 2024
+    "04-01", // 2. Påskedag 2024
+    "04-26", // Store Bededag 2024
+    "05-09", // Kristi Himmelfartsdag 2024
+    "05-19", // Pinsedag 2024
+    "05-20",  // 2. Pinsedag 2024
+    "04-17", // Skærtorsdag 2025
+    "04-18", // Langfredag 2025
+    "04-20", // Påskedag 2025
+    "04-21", // 2. Påskedag 2025
+    "05-16", // Store Bededag 2025
+    "05-29", // Kristi Himmelfartsdag 2025
+    "06-08", // Pinsedag 2025
+    "06-09"  // 2. Pinsedag 2025
+];
 
 // Function to set a favorite stop
 function setFavorite() {
     // Store favorite in local storage
     selectedStop = document.getElementById("stopPicker").value;
-    localStorage.setItem("favoriteStop", selectedStop);
-    console.log("Favorite set:", selectedStop);
 
-    // Highlight the favorite button
-    document.getElementById("favoriteBtn").classList.add("active");
+    // Get current favorites or create new if does not exist
+    let favorites = JSON.parse(localStorage.getItem("favoriteStops")) || [];
+
+    // Check if the selected stop is already a favorite
+    if (!favorites.includes(selectedStop)) {
+        // Add selected stop to favorites
+        favorites.push(selectedStop);
+        console.log("Favorite added:", selectedStop);
+    } else {
+        // Remove the selected stop from favorites
+        favorites = favorites.filter(function(stop) {
+            return stop !== selectedStop;
+        });
+        console.log("Favorite removed:", selectedStop);
+    }
+
+    // Store updated favorites array in local storage
+    localStorage.setItem("favoriteStops", JSON.stringify(favorites));
+    
+    // Highlight the favorite button if the stop is added or remove highlight if removed
+    if (favorites.includes(selectedStop)) {
+        document.getElementById("favoriteBtn").classList.add("active");
+    } else {
+        document.getElementById("favoriteBtn").classList.remove("active");
+    }
 }
 
 // Function to check if the selected stop is the favorite stop
@@ -150,11 +197,11 @@ function checkFavorite() {
     selectedStop = document.getElementById("stopPicker").value;
 
     // Get stored values
-    const storedFavorite = localStorage.getItem("favoriteStop");
+    const favorites = localStorage.getItem("favoriteStops");
 
     // Highlight or unhighlight the button based on match
     const favoriteBtn = document.getElementById("favoriteBtn");
-    if (selectedStop === storedFavorite) {
+    if (favorites.includes(selectedStop)) {
         favoriteBtn.classList.add("active");
         console.log("Selection and stored favorite match:", selectedStop);
     } else {
@@ -230,9 +277,15 @@ function setVariables(route) {
 }
 
 // Function to determine the type of day
-function setDayType() {
-    //Determine day type
-    switch (currentTime.getDay()) {
+function setDayType(date = new Date()) {
+    // Check if today is a holiday
+    const formattedDate = ('0' + (date.getMonth() + 1)).slice(-2) + '-' + ('0' + date.getDate()).slice(-2);
+    if (holidayDates.includes(formattedDate)) {
+        return 'holiday';
+    }
+
+    // Otherwise check what day it is
+    switch (date.getDay()) {
         case 0:
             return "holiday";  //Sunday and other holidays
         case 6:
@@ -400,19 +453,20 @@ function populateDropdown() {
         fragment.appendChild(el);
     });
 
-    const storedFavorite = localStorage.getItem("favoriteStop");
+    const storedFavorites = JSON.parse(localStorage.getItem("favoriteStops"));
 
-    if (storedFavorite) {
-        const favStop = stopData.find(stop => stop.id === storedFavorite);
-        
-        let el = document.createElement("option");
-        el.textContent = favStop.display + " " + favStop.name;
-        el.value = favStop.id;
-
+    if (storedFavorites) {
         let favGroup = document.createElement("optgroup");
-        favGroup.label = "Dit stoppested";
-        favGroup.appendChild(el);
-
+        favGroup.label = "Mine stoppesteder";
+        
+        storedFavorites.forEach(fav => {
+            const favStop = stopData.find(stop => stop.id === fav);
+            let el = document.createElement("option");
+            el.textContent = favStop.display + " " + favStop.name;
+            el.value = favStop.id;
+            favGroup.appendChild(el);
+        });
+        
         dropdownEl.appendChild(favGroup);
     }
 
@@ -434,13 +488,13 @@ function resetDropdown(dropdownEl) {
 
 function loadDefault() {
     //Get stored values
-    const s = localStorage.getItem("favoriteStop");
+    const s = JSON.parse(localStorage.getItem("favoriteStops"));
 
     populateDropdown();
 
     if (s) {
-        console.log(`Favorite found: ${s}`);
-        document.getElementById("stopPicker").value = s;
+        console.log(`Favorite found: ${s[0]}`);
+        document.getElementById("stopPicker").value = s[0];
         checkFavorite();
     }
 

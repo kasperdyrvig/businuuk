@@ -126,12 +126,11 @@ body {
 .button {
     background-color: var(--buttoncolor);
     display: block;
-    width: 100%;
     border: 0;
     border-radius: var(--borderradius);
     color: unset;
     text-decoration: none;
-    padding: .8em;
+    padding: .6rem .8em;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, .3);
     font-family: inherit;
     font-size: 1em;
@@ -155,6 +154,10 @@ body {
 .button-pin {
     border-left: 1px solid #bbbbbb;
     border-radius: 0 var(--borderradius) var(--borderradius) 0;
+}
+
+.updatebutton {
+    margin: 0 auto;
 }
 
 h1,
@@ -199,6 +202,7 @@ h2 {
     padding: .5em;
     background-color: var(--areacolor);
     border-radius: var(--borderradius);
+    margin-bottom: 1rem;
 }
 
 .section {

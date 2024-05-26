@@ -5,10 +5,11 @@
 ## Opdateringer
 
 Maj 2024
+- Køreplaner på helligdage.
+- Vælg flere favoritter.
 - Forbedret offline-oplevelse.
 - Mulighed for at finde nærmeste stop baseret på GPS-lokation.
 - Favoritstop vises øverst i listen.
-- Flyttet til GitHub.
 - Dark theme fjernet.
 - Refactor javascript med ChatGPT.
 
