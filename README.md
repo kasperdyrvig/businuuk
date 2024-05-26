@@ -5,6 +5,7 @@
 ## Opdateringer
 
 Maj 2024
+- Se ruteoversigt.
 - Køreplaner på helligdage.
 - Vælg flere favoritter.
 - Forbedret offline-oplevelse.

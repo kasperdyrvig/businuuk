@@ -162,10 +162,10 @@ const holidayDates = [
 // Function to set a favorite stop
 function setFavorite() {
     // Store favorite in local storage
-    selectedStop = document.getElementById("stopPicker").value;
+    selectedStop = parseInt(document.getElementById("stopPicker").value);
 
     // Get current favorites or create new if does not exist
-    let favorites = JSON.parse(localStorage.getItem("favoriteStops")) || [];
+    let favorites = JSON.parse(localStorage.getItem("favoriteStop")) || [];
 
     // Check if the selected stop is already a favorite
     if (!favorites.includes(selectedStop)) {
@@ -181,7 +181,7 @@ function setFavorite() {
     }
 
     // Store updated favorites array in local storage
-    localStorage.setItem("favoriteStops", JSON.stringify(favorites));
+    localStorage.setItem("favoriteStop", JSON.stringify(favorites));
     
     // Highlight the favorite button if the stop is added or remove highlight if removed
     if (favorites.includes(selectedStop)) {
@@ -194,19 +194,21 @@ function setFavorite() {
 // Function to check if the selected stop is the favorite stop
 function checkFavorite() {
     // Get selected values
-    selectedStop = document.getElementById("stopPicker").value;
+    selectedStop = parseInt(document.getElementById("stopPicker").value);
 
     // Get stored values
-    const favorites = localStorage.getItem("favoriteStops");
+    const favorites = localStorage.getItem("favoriteStop");
 
-    // Highlight or unhighlight the button based on match
-    const favoriteBtn = document.getElementById("favoriteBtn");
-    if (favorites.includes(selectedStop)) {
-        favoriteBtn.classList.add("active");
-        console.log("Selection and stored favorite match:", selectedStop);
-    } else {
-        favoriteBtn.classList.remove("active");
-        console.log("Selection and stored favorite do not match:", selectedStop);
+    if(favorites) {
+        // Highlight or unhighlight the button based on match
+        const favoriteBtn = document.getElementById("favoriteBtn");
+        if (favorites.includes(selectedStop)) {
+            favoriteBtn.classList.add("active");
+            console.log("Selection and stored favorite match:", selectedStop);
+        } else {
+            favoriteBtn.classList.remove("active");
+            console.log("Selection and stored favorite do not match:", selectedStop);
+        }
     }
 }
 
@@ -453,14 +455,14 @@ function populateDropdown() {
         fragment.appendChild(el);
     });
 
-    const storedFavorites = JSON.parse(localStorage.getItem("favoriteStops"));
+    const storedFavorites = JSON.parse(localStorage.getItem("favoriteStop"));
 
     if (storedFavorites) {
         let favGroup = document.createElement("optgroup");
         favGroup.label = "Mine stoppesteder";
         
         storedFavorites.forEach(fav => {
-            const favStop = stopData.find(stop => stop.id === fav);
+            const favStop = stopData.find(stop => stop.id === String(fav));
             let el = document.createElement("option");
             el.textContent = favStop.display + " " + favStop.name;
             el.value = favStop.id;
@@ -488,7 +490,7 @@ function resetDropdown(dropdownEl) {
 
 function loadDefault() {
     //Get stored values
-    const s = JSON.parse(localStorage.getItem("favoriteStops"));
+    const s = JSON.parse(localStorage.getItem("favoriteStop"));
 
     populateDropdown();
 
