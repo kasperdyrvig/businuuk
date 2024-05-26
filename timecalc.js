@@ -59,6 +59,8 @@ const stopData = [
 ];
 const routes = {
     "1": {
+        name: "Rute 1",
+        description: "Nuuk–Qinngorput",
         stops: [18, 1, 47, 63, 50, 54, 56, 57, 60, 61, 41, 64, 46, 8, 9, 52, 28, 27, 62, 58, 24],
         driveTime: [0, 1, 3, 1, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 1, 2, 2, 1, 4, 2, 6, 2],
         drivingHours: {
@@ -81,6 +83,8 @@ const routes = {
         }
     },
     "2": {
+        name: "Rute 2",
+        description: "Nuuk–Nuussuaq",
         stops: [17, 18, 70, 1, 36, 48, 49, 19, 2, 59, 3, 4, 5, 6, 71, 8, 9, 10, 11, 12, 13, 14, 15, 16],
         driveTime: [0, 2, 3, 2, 1, 2, 1, 1, 1, 1, 1, 1, 2, 2, 3, 2, 1, 2, 2, 1, 3, 1, 2, 1, 2],
         drivingHours: {
@@ -99,6 +103,8 @@ const routes = {
         }
     },
     "X2": {
+        name: "Rute X2",
+        description: "Nuuk–Nuussuaq Express",
         stops: [17, 18, 1, 2, 59, 3, 4, 5, 6, 8, 9, 10, 11, 12, 13, 14, 15, 16],
         driveTime: [0, 2, 1, 2, 1, 1, 1, 2, 2, 3, 1, 2, 2, 1, 3, 1, 2, 2, 1],
         drivingHours: {
@@ -111,6 +117,8 @@ const routes = {
         }
     },
     "3": {
+        name: "Rute 3",
+        description: "Nuuk–Qernertunnguanut–Nuussuaq–Airport",
         stops: [10, 11, 12, 13, 14, 15, 16, 17, 18, 350, 1, 2, 59, 3, 4, 5, 6, 36, 37, 38, 42, 39, 40, 44, 43, 48, 49, 19, 8, 351, 9],
         driveTime:[0, 2, 1, 2, 1, 1, 2, 2, 2, 3, 3, 2, 1, 1, 1, 2, 2, 2, 1, 1, 1, 1, 5, 1, 1, 2, 6, 1, 1, 2, 2, 3],
         drivingHours: {
@@ -473,7 +481,6 @@ function getNearestStop() {
         const userLon = position.coords.longitude;
         const nearestStop = findNearestStop(userLat, userLon);
         if (nearestStop) {
-            //resultElement.innerHTML = `Nærmeste stoppested er ${nearestStop.name} ved (${nearestStop.lat}, ${nearestStop.lon})`;
             setDropdown(nearestStop.id);
             getNextBus();
         } else {
@@ -481,6 +488,29 @@ function getNearestStop() {
         }
     }, (error) => {
         console.error('Error getting location:', error);
-        document.getElementById('dataContainer').innerHTML = 'Fejl ved hentning af position: ' + error.message;
+        //document.getElementById('dataContainer').innerHTML = 'Fejl ved hentning af position: ' + error.message;
     });
+}
+
+function loadRoutes() {
+    if ("content" in document.createElement("template")) {
+        const routesList = document.getElementById("routesList");
+        if(routesList) {
+            const listItemTemplate = document.getElementById("routesListItemTemp");
+            for (const key in routes) {
+                if (routes.hasOwnProperty(key)) {
+                    const clon = listItemTemplate.content.cloneNode(true);
+                    let li = clon.querySelector("li");
+                    const route = routes[key];
+                    li.querySelector(".route-name").classList.add("route-" + key);
+                    li.querySelector(".route-name").textContent = key;
+                    li.querySelector(".route-desc").textContent = route.description;
+                    routesList.appendChild(clon);
+                }
+            }
+        }
+    }
+    else {
+        console.log("Templates virker ikke");
+    }
 }

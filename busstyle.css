@@ -350,3 +350,11 @@ h2 {
     padding: 1px 5px;
     border-radius: 12px;
 }
+
+#routesList {
+    list-style: none;
+    margin: 0;
+    padding: .5em;
+    background-color: var(--areacolor);
+    border-radius: var(--borderradius);
+}

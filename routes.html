@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="utf-8">
+    <title>Busruter i Nuuk</title>
+    <meta name="description" content="Oversigt busruter i Nuuk">
+    <link rel="icon" href="32.png" type="image/png" sizes="32x32">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="#fec94b">
+    <meta name="apple-mobile-web-app-title" content="Bus i Nuuk">
+    <link rel="apple-touch-icon" href="300.png">
+    <meta name="theme-color" content="#fec94b">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <link href="busstyle.css" rel="stylesheet">
+    <link rel="manifest" href="manifest.json">
+    <script src="timecalc.js" async></script>
+</head>
+<body class="app" onload="loadRoutes()">
+    <header class="header-container">
+        <h1 class="header-title">Ruter</h1>
+    </header>
+    <main class="container">
+        <ul id="routesList">
+        </ul>
+        <template id="routesListItemTemp">
+            <li class="route-container">
+                <div class="route-name">X</div>
+                <div class="route-body">
+                    <div class="route-desc">Description</div>
+                    <small class="route-status">Status</small>
+                </div>
+            </li>
+        </template>
+    </main>
+    <nav class="app-nav">
+        <a href="index.html" class="app-nav-item" title="Næste bus"><span class="app-nav-icon">&#128653;</span> Næste bus</a>
+        <a href="routes.html" class="app-nav-item active" title="Ruter"><span class="app-nav-icon">&#128655;</span> Ruter</a>
+        <a href="prices.html" class="app-nav-item" title="Billetter og kort"><span class="app-nav-icon">&#128179;</span> Billetter og kort</a>
+        <a href="help.html" class="app-nav-item" title="Hjælp"><span class="app-nav-icon">&#10067;</span> Hjælp</a>
+    </nav>
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then((reg) => {
+                        console.log('Service worker registered.', reg);
+                    }).catch(err => {
+                        console.log('Registration failed', err);
+                    });
+            });
+        }
+    </script>
+</body>
+</html>
