@@ -1,9 +1,11 @@
-﻿const CACHE_NAME = 'pwa-businuuk-v19';
+﻿const CACHE_NAME = 'pwa-businuuk-v20';
 const urlsToCache = [
     '.',
     'index.html',
     'offline.html',
     'prices.html',
+    'routes.html',
+    'route.html',
     'help.html',
     'busstyle.css',
     'timecalc.js'

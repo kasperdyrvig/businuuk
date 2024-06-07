@@ -4,6 +4,9 @@
 
 ## Opdateringer
 
+Juni 2024
+- Ruteoversigt.
+
 Maj 2024
 - Se ruteoversigt.
 - Køreplaner på helligdage.

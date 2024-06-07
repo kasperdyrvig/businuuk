@@ -548,9 +548,26 @@ function getNearestStop() {
     });
 }
 
+// Function to return true if the given bus route is active
+function isRouteActive(routeName) {
+    const route = routes[routeName];
+    let routeTimes = [];
+    let activeBusses = 0;
+    routeTimes.push(...route.drivingHours[setDayType()] || []);
+    routeTimes.forEach(time => {
+        if (time.startHour < currentTime.getHours() && time.endHour > currentTime.getHours()) {
+            activeBusses++;
+        }
+    });
+
+    return activeBusses > 0;
+}
+
+// Function to list routes
 function loadRoutes() {
     if ("content" in document.createElement("template")) {
         const routesList = document.getElementById("routesList");
+        currentTime = new Date();
         if(routesList) {
             const listItemTemplate = document.getElementById("routesListItemTemp");
             for (const key in routes) {
@@ -562,6 +579,11 @@ function loadRoutes() {
                     li.querySelector(".route-name").textContent = key;
                     li.querySelector(".route-desc").textContent = route.description;
                     li.setAttribute("href", "route.html?route=" + key);
+                    if(isRouteActive(key)) {
+                        li.querySelector(".route-status").textContent = "Kører";
+                    } else {
+                        li.querySelector(".route-status").textContent = "Stoppet";
+                    }
                     routesList.appendChild(clon);
                 }
             }
@@ -577,6 +599,7 @@ function getSelectedRouteFromQueryString() {
     return urlParams.get('route') || "X2"; // Default til "X2" hvis ingen parameter
 }
 
+// Function to show all stops in a route
 function loadRouteDetails() {
     const selectedRoute = getSelectedRouteFromQueryString();
 
