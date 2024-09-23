@@ -259,6 +259,7 @@ h2 {
     font-weight: bold;
     color: #fff;
     text-shadow: 0 1px 0 rgba(0, 0, 0, .5);
+    text-decoration: none;
 }
 
 .route-name-small {
@@ -380,6 +381,10 @@ display: grid;
     margin-bottom: .5em;
     align-items: center;
     position: relative;
+}
+
+.line > li.line-stop-hereIam {
+    background-color: var(--buttoncolor);
 }
 
 .line li:not(:last-child)::after {

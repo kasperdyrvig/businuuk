@@ -417,7 +417,7 @@ function pushElement(departureMinutes, departureTimes) {
     const stringMinutes = pluralize(departureMinutes[0], 'minut', 'minutter');
 
     resultElement.innerHTML += `<div class="route-container">
-            <div class="route-name route-${currentRoute}">${currentRoute}</div>
+            <a href="route.html?route=${currentRoute}&stop=${selectedStop}" class="route-name route-${currentRoute}">${currentRoute}</a>
             <div class="route-body">
                 <strong class="route-time-left">${departureMinutes[0]} ${stringMinutes}</strong>
                 <small class="route-next-stop">
@@ -596,12 +596,18 @@ function loadRoutes() {
 
 function getSelectedRouteFromQueryString() {
     const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get('route') || "X2"; // Default til "X2" hvis ingen parameter
+    return urlParams.get('route');
+}
+
+function getSelectedStopFromQueryString() {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get('stop');
 }
 
 // Function to show all stops in a route
 function loadRouteDetails() {
     const selectedRoute = getSelectedRouteFromQueryString();
+    const myStop = getSelectedStopFromQueryString();
 
     // Check if the route exists
     if (!routes[selectedRoute]) {
@@ -623,6 +629,9 @@ function loadRouteDetails() {
             const clone = lineItemTemp.content.cloneNode(true);
             clone.querySelector(".line-stop-number").textContent = stop.display;
             clone.querySelector(".line-stop-name").textContent = stop.name;
+            if (stop.id == myStop) {
+                clone.querySelector("li").classList.add("line-stop-hereIam");
+            }
             lineEl.appendChild(clone);
         } else {
             console.error(`Stop with ID ${lineItem} not found`);
