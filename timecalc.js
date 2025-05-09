@@ -9,7 +9,7 @@ let currentDayType = "";
 const resultElement = document.getElementById("result");
 let currentTime;
 
-const routeData = ["1", "2", "X2", "3"];
+const routeData = ["1", "2", "X2", "E2", "3", "X3"];
 const stopData = [
     { id: "1", display: "1", name: "Eqalugalinnguit", lat: "64.1887001", lon: "-51.7128939" },
     { id: "2", display: "2", name: "Nunngarut", lat: "64.185182", lon: "-51.7051482" },
@@ -30,13 +30,16 @@ const stopData = [
     { id: "16", display: "16", name: "Qatserisut", lat: "64.1718513", lon: "-51.7367524" },
     { id: "17", display: "17", name: "Sarfaannguit", lat: "64.1793412", lon: "-51.7234424" },
     { id: "18", display: "18", name: "Akunnerit", lat: "64.185276", lon: "-51.7206896" },
+    { id: "19", display: "19", name: "Nukalloq" },
     { id: "24", display: "24", name: "Narsarsuaq", lat: "64.1772066", lon: "-51.7315979" },
     { id: "27", display: "27", name: "Tuujuk", lat: "64.1711948", lon: "-51.7344789" },
     { id: "28", display: "28", name: "Røde etagehuse", lat: "64.1711948", lon: "-51.7344789" },
     { id: "350", display: "35", name: "Qernertunnguanut (mod Nuussuaq)", lat: "64.1889938", lon: "-51.7248637" },
     { id: "351", display: "35", name: "Qernertunnguanut (mod Nuuk)", lat: "64.1889938", lon: "-51.7248637" },
     { id: "36", display: "36", name: "Atertaq", lat: "64.188663", lon: "-51.7005409" },
-    { id: "39", display: "39", name: "Nuuk Lufthavn", lat: "64.1916647", lon: "-51.6756845" },
+    { id: "37", display: "37", name: "Ilimmarfik" },
+    { id: "38", display: "38", name: "Nukappiakuluk" },
+    { id: "39", display: "39", name: "Napasuliaq" },
     { id: "40", display: "40", name: "Air Greenland adm.", lat: "64.1901139", lon: "-51.6745258" },
     { id: "41", display: "41", name: "Asiarpak", lat: "64.1736119", lon: "-51.6695683" },
     { id: "46", display: "46", name: "Qattaaq", lat: "64.185024", lon: "-51.7046705" },
@@ -55,30 +58,34 @@ const stopData = [
     { id: "62", display: "62", name: "Kommuneqarfik", lat: "64.1769488", lon: "-51.7372953" },
     { id: "63", display: "63", name: "Maligiaq", lat: "64.184623", lon: "-51.700291" },
     { id: "64", display: "64", name: "Pukuffik", lat: "64.183149", lon: "-51.695977" },
-    { id: "65", display: "65", name: "Munck camp", lat: "64.187580", lon: "-51.673871" }
+    { id: "66", display: "66", name: "Mittarfik/Lufthavn/Airport" },
+    { id: "67", display: "67", name: "Isertitsiviit" },
+    { id: "68", display: "68", name: "Qeqertanut stop 1" },
+    { id: "69", display: "69", name: "Qeqertanut stop 2" },
+    { id: "700", display: "70", name: "Qeqertanut stop 3" }
 ];
 const routes = {
     "1": {
         name: "Rute 1",
         description: "Nuuk–Qinngorput",
         stops: [18, 1, 47, 63, 50, 54, 56, 57, 60, 61, 41, 64, 46, 8, 9, 52, 28, 27, 62, 58, 24],
-        driveTime: [0, 1, 3, 1, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 1, 2, 2, 1, 4, 2, 6, 2],
+        driveTime: [0, 1, 3, 1, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 1, 2, 3, 1, 2, 2, 2, 5],
         drivingHours: {
             holiday: [
                 { startHour: 6, startMinute: 9, endHour: 24, endMinute: 7, interval: 40 },
-                { startHour: 11, startMinute: 9, endHour: 17, endMinute: 47, interval: 40 }
+                { startHour: 9, startMinute: 9, endHour: 20, endMinute: 27, interval: 40 }
             ],
             weekend: [
                 { startHour: 6, startMinute: 9, endHour: 24, endMinute: 7, interval: 40 },
-                { startHour: 9, startMinute: 9, endHour: 17, endMinute: 47, interval: 40 }
+                { startHour: 9, startMinute: 9, endHour: 20, endMinute: 27, interval: 40 }
             ],
             weekday: [
+                { startHour: 5, startMinute: 49, endHour: 20, endMinute: 27, interval: 40 },
                 { startHour: 6, startMinute: 9, endHour: 24, endMinute: 7, interval: 40 },
-                { startHour: 6, startMinute: 29, endHour: 21, endMinute: 7, interval: 40 },
                 { startHour: 6, startMinute: 59, endHour: 8, endMinute: 57, interval: 40 },
-                { startHour: 7, startMinute: 19, endHour: 9, endMinute: 17, interval: 40 },
-                { startHour: 12, startMinute: 39, endHour: 17, endMinute: 17, interval: 40 },
-                { startHour: 14, startMinute: 59, endHour: 17, endMinute: 37, interval: 40 }
+                { startHour: 7, startMinute: 19, endHour: 8, endMinute: 37, interval: 40 },
+                { startHour: 14, startMinute: 19, endHour: 17, endMinute: 37, interval: 40 },
+                { startHour: 14, startMinute: 39, endHour: 17, endMinute: 17, interval: 40 }
             ]
         }
     },
@@ -90,15 +97,15 @@ const routes = {
         drivingHours: {
             holiday: [
                 { startHour: 6, startMinute: 0, endHour: 23, endMinute: 58, interval: 40 },
-                { startHour: 11, startMinute: 0, endHour: 20, endMinute: 58, interval: 40 }
+                { startHour: 9, startMinute: 0, endHour: 20, endMinute: 18, interval: 40 }
             ],
             weekend: [
                 { startHour: 6, startMinute: 0, endHour: 23, endMinute: 58, interval: 40 },
-                { startHour: 9, startMinute: 0, endHour: 20, endMinute: 58, interval: 40 }
+                { startHour: 9, startMinute: 0, endHour: 20, endMinute: 18, interval: 40 }
             ],
             weekday: [
                 { startHour: 6, startMinute: 0, endHour: 23, endMinute: 58, interval: 40 },
-                { startHour: 6, startMinute: 20, endHour: 20, endMinute: 58, interval: 40 }
+                { startHour: 6, startMinute: 20, endHour: 20, endMinute: 18, interval: 40 }
             ]
         }
     },
@@ -109,25 +116,47 @@ const routes = {
         driveTime: [0, 2, 1, 2, 1, 1, 1, 2, 2, 3, 1, 2, 2, 1, 3, 1, 2, 2, 1],
         drivingHours: {
             weekday: [
-                { startHour: 7, startMinute: 18, endHour: 9, endMinute: 16, interval: 30 },
-                { startHour: 7, startMinute: 33, endHour: 9, endMinute: 1, interval: 30 },
-                { startHour: 12, startMinute: 48, endHour: 18, endMinute: 1, interval: 30 },
-                { startHour: 13, startMinute: 3, endHour: 17, endMinute: 16, interval: 30 }
+                { startHour: 7, startMinute: 18, endHour: 17, endMinute: 16, interval: 30 },
+                { startHour: 7, startMinute: 33, endHour: 17, endMinute: 1, interval: 30 }
+            ]
+        }
+    },
+    "E2": {
+        name: "Rute E2",
+        description: "Nuuk–Nuussuaq Extra",
+        stops: [17, 18, 350, 1, 2, 59, 3, 4, 5, 6, 8, 351, 9, 10, 11, 12, 13, 14, 15, 16],
+        driveTime: [0, 2, 3, 2, 2, 1, 2, 3, 2, 1, 2, 3, 2, 2, 2, 1, 3, 1, 2, 1, 2],
+        drivingHours: {
+            holiday: [
+                { startHour: 12, startMinute: 50, endHour: 16, endMinute: 8, interval: 40 },
+                { startHour: 13, startMinute: 10, endHour: 16, endMinute: 28, interval: 40 }
+            ],
+            weekend: [
+                { startHour: 12, startMinute: 50, endHour: 16, endMinute: 8, interval: 40 },
+                { startHour: 13, startMinute: 10, endHour: 16, endMinute: 28, interval: 40 }
             ]
         }
     },
     "3": {
         name: "Rute 3",
         description: "Nuuk–Qernertunnguanut–Nuussuaq–Airport",
-        stops: [10, 11, 12, 13, 14, 15, 16, 17, 18, 350, 1, 2, 59, 3, 4, 5, 6, 36, 37, 38, 42, 39, 40, 44, 43, 48, 49, 19, 8, 351, 9],
-        driveTime:[0, 2, 1, 2, 1, 1, 2, 2, 2, 3, 3, 2, 1, 1, 1, 2, 2, 2, 1, 1, 1, 1, 5, 1, 1, 2, 6, 1, 1, 2, 2, 3],
+        stops: [10, 11, 12, 13, 14, 15, 16, 17, 18, 350, 1, 2, 59, 3, 4, 5, 6, 36, 37, 38, 67, 39, 40, 66, 64, 46, 8, 351, 9],
+        driveTime:[0, 2, 1, 3, 1, 1, 2, 2, 2, 3, 4, 2, 1, 1, 2, 2, 2, 2, 2, 1, 3, 3, 1, 2, 4, 1, 2, 3, 2, 3],
         drivingHours: {
-            weekend: [
-                { startHour: 12, startMinute: 26, endHour: 16, endMinute: 23, interval: 60 }
-            ],
             weekday: [
-                { startHour: 6, startMinute: 16, endHour: 8, endMinute: 23, interval: 60 },
-                { startHour: 8, startMinute: 26, endHour: 17, endMinute: 23, interval: 60 }
+                { startHour: 8, startMinute: 16, endHour: 12, endMinute: 13, interval: 60 },
+                { startHour: 12, startMinute: 26, endHour: 17, endMinute: 23, interval: 60 }
+            ]
+        }
+    },
+    "X3": {
+        name: "Rute X3",
+        description: "Nuuk–Qernertunnguanut–Nuussuaq–Qeqertanut–Airport",
+        stops: [28, 27, 62, 58, 24, 18, 350, 1, 47, 63, 68, 69, 700, 4, 5, 6, 47, 46, 37, 38, 67, 39, 40, 66, 64, 46, 8, 351, 9, 52],
+        driveTime:[0, 1, 2, 1, 2, 2, 3, 3, 2, 1, 3, 1, 2, 3, 2, 2, 3, 3, 2, 1, 2, 1, 1, 2, 3, 1, 2, 2, 2, 2, 3],
+        drivingHours: {
+            weekday: [
+                { startHour: 6, startMinute: 18, endHour: 8, endMinute: 13, interval: 60 }
             ]
         }
     }
@@ -141,14 +170,6 @@ const holidayDates = [
     "12-25", // 25. december
     "12-26", // 26. december
     "12-31", // 31. december indtil kl. 19
-    "03-28", // Skærtorsdag 2024
-    "03-29", // Langfredag 2024
-    "03-31", // Påskedag 2024
-    "04-01", // 2. Påskedag 2024
-    "04-26", // Store Bededag 2024
-    "05-09", // Kristi Himmelfartsdag 2024
-    "05-19", // Pinsedag 2024
-    "05-20",  // 2. Pinsedag 2024
     "04-17", // Skærtorsdag 2025
     "04-18", // Langfredag 2025
     "04-20", // Påskedag 2025
@@ -448,9 +469,13 @@ function populateDropdown() {
 
     const fragment = document.createDocumentFragment();
 
+    stopData.sort(function(a, b) {
+        return a.name.localeCompare(b.name);
+    });    
+    
     stopData.forEach(function(opt) {
         let el = document.createElement("option");
-        el.textContent = opt.display + " " + opt.name;
+        el.textContent = opt.name + " (" + opt.display + ")";
         el.value = opt.id;
         fragment.appendChild(el);
     });
@@ -464,7 +489,7 @@ function populateDropdown() {
         storedFavorites.forEach(fav => {
             const favStop = stopData.find(stop => stop.id === String(fav));
             let el = document.createElement("option");
-            el.textContent = favStop.display + " " + favStop.name;
+            el.textContent = favStop.name + " (" + favStop.display + ")";
             el.value = favStop.id;
             favGroup.appendChild(el);
         });

@@ -4,6 +4,13 @@
 
 ## Opdateringer
 
+Maj 2025
+- Opdateret køreplan og priser.
+- Sorterer stop i dropdown alfabetisk.
+
+September 2024
+- Link fra forsiden til den valgte rute. Det valgte stoppested er fremhævet.
+
 Juni 2024
 - Ruteoversigt.
 
