@@ -31,6 +31,7 @@ const stopData = [
     { id: "17", display: "17", name: "Sarfaannguit", lat: "64.1793412", lon: "-51.7234424" },
     { id: "18", display: "18", name: "Akunnerit", lat: "64.185276", lon: "-51.7206896" },
     { id: "19", display: "19", name: "Nukalloq" },
+    { id: "20", display: "20", name: "Atuarfik Inussuk", lat: "64.175919", lon: "-51.735845"},
     { id: "24", display: "24", name: "Narsarsuaq", lat: "64.1772066", lon: "-51.7315979" },
     { id: "27", display: "27", name: "Tuujuk", lat: "64.1711948", lon: "-51.7344789" },
     { id: "28", display: "28", name: "Røde etagehuse", lat: "64.1711948", lon: "-51.7344789" },
@@ -68,8 +69,8 @@ const routes = {
     "1": {
         name: "Rute 1",
         description: "Nuuk–Qinngorput",
-        stops: [18, 1, 47, 63, 50, 54, 56, 57, 60, 61, 41, 64, 46, 8, 9, 52, 28, 27, 62, 58, 24],
-        driveTime: [0, 1, 3, 1, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 1, 2, 3, 1, 2, 2, 2, 5],
+        stops: [18, 1, 47, 63, 50, 54, 56, 57, 60, 61, 41, 64, 46, 8, 9, 52, 28, 27, 20, 62, 58, 24],
+        driveTime: [0, 1, 3, 1, 2, 2, 2, 2, 1, 2, 2, 2, 1, 2, 1, 2, 2, 1, 1, 3, 2, 3, 2],
         drivingHours: {
             holiday: [
                 { startHour: 6, startMinute: 9, endHour: 24, endMinute: 7, interval: 40 },
@@ -92,8 +93,8 @@ const routes = {
     "2": {
         name: "Rute 2",
         description: "Nuuk–Nuussuaq",
-        stops: [17, 18, 70, 1, 36, 48, 49, 19, 2, 59, 3, 4, 5, 6, 71, 8, 9, 10, 11, 12, 13, 14, 15, 16],
-        driveTime: [0, 2, 3, 2, 1, 2, 1, 1, 1, 1, 1, 1, 2, 2, 3, 2, 1, 2, 2, 1, 3, 1, 2, 1, 2],
+        stops: [17, 18, 70, 1, 36, 48, 49, 2, 59, 3, 4, 5, 6, 71, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+        driveTime: [0, 2, 3, 2, 1, 2, 1, 3, 1, 1, 1, 2, 2, 3, 2, 1, 2, 2, 1, 3, 1, 2, 1, 2],
         drivingHours: {
             holiday: [
                 { startHour: 6, startMinute: 0, endHour: 23, endMinute: 58, interval: 40 },
@@ -140,8 +141,8 @@ const routes = {
     "3": {
         name: "Rute 3",
         description: "Nuuk–Qernertunnguanut–Nuussuaq–Airport",
-        stops: [10, 11, 12, 13, 14, 15, 16, 17, 18, 350, 1, 2, 59, 3, 4, 5, 6, 36, 37, 38, 67, 39, 40, 66, 64, 46, 8, 351, 9],
-        driveTime:[0, 2, 1, 3, 1, 1, 2, 2, 2, 3, 4, 2, 1, 1, 2, 2, 2, 2, 2, 1, 3, 3, 1, 2, 4, 1, 2, 3, 2, 3],
+        stops: [10, 11, 12, 13, 14, 15, 16, 17, 18, 350, 1, 2, 59, 3, 4, 5, 6, 36, 37, 38, 67, 40, 66, 64, 46, 8, 351, 9],
+        driveTime:[0, 2, 1, 3, 1, 1, 2, 2, 2, 3, 3, 2, 1, 2, 2, 2, 1, 1, 1, 1, 2, 3, 8, 4, 1, 2, 3, 2, 3],
         drivingHours: {
             weekday: [
                 { startHour: 8, startMinute: 16, endHour: 12, endMinute: 13, interval: 60 },
@@ -152,8 +153,8 @@ const routes = {
     "X3": {
         name: "Rute X3",
         description: "Nuuk–Qernertunnguanut–Nuussuaq–Qeqertanut–Airport",
-        stops: [28, 27, 62, 58, 24, 18, 350, 1, 47, 63, 68, 69, 700, 4, 5, 6, 47, 46, 37, 38, 67, 39, 40, 66, 64, 46, 8, 351, 9, 52],
-        driveTime:[0, 1, 2, 1, 2, 2, 3, 3, 2, 1, 3, 1, 2, 3, 2, 2, 3, 3, 2, 1, 2, 1, 1, 2, 3, 1, 2, 2, 2, 2, 3],
+        stops: [28, 27, 62, 58, 24, 18, 350, 1, 47, 63, 68, 69, 700, 4, 5, 6, 47, 46, 37, 38, 67, 40, 66, 64, 46, 8, 351, 9, 52],
+        driveTime:[0, 1, 2, 1, 2, 2, 3, 3, 2, 1, 3, 1, 2, 3, 2, 2, 3, 3, 2, 1, 2, 2, 2, 2, 1, 2, 2, 2, 2, 3],
         drivingHours: {
             weekday: [
                 { startHour: 6, startMinute: 18, endHour: 8, endMinute: 13, interval: 60 }
@@ -162,6 +163,7 @@ const routes = {
     }
 };
 const holidayDates = [
+    // Same all years
     "01-01", // 1. januar
     "01-06", // 6. januar (hvis det er i hverdagene) efter kl. 12
     "05-01", // 1. maj (hvis det er i hverdagene) efter kl. 12
@@ -170,14 +172,14 @@ const holidayDates = [
     "12-25", // 25. december
     "12-26", // 26. december
     "12-31", // 31. december indtil kl. 19
-    "04-17", // Skærtorsdag 2025
-    "04-18", // Langfredag 2025
-    "04-20", // Påskedag 2025
-    "04-21", // 2. Påskedag 2025
-    "05-16", // Store Bededag 2025
-    "05-29", // Kristi Himmelfartsdag 2025
-    "06-08", // Pinsedag 2025
-    "06-09"  // 2. Pinsedag 2025
+    // Special 2027
+    "03-25", // Skærtorsdag 2027
+    "03-26", // Langfredag 2027
+    "03-28", // Påskedag 2027
+    "03-29", // 2. Påskedag 2027
+    "05-06", // Kristi Himmelfartsdag 2027
+    "05-16", // Pinsedag 2027
+    "05-17"  // 2. Pinsedag 2027
 ];
 
 // Function to set a favorite stop

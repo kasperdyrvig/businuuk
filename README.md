@@ -4,6 +4,13 @@
 
 ## Opdateringer
 
+Sepetember 2026
+- Tilføjet stop 20 til rute 1.
+- Fjernet stop 19 fra rute 2.
+- Fjernet stop 39 fra rute 3 og X3.
+- Tilføjet helligdage for 2027.
+- Opdateret priser.
+
 Maj 2025
 - Opdateret køreplan og priser.
 - Sorterer stop i dropdown alfabetisk.
